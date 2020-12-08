@@ -1,0 +1,13 @@
+﻿@model Game
+
+<div class="media">
+    <img src="@Model.ImageUrl" class="align-self-center mr-3" alt="@Model.Name">
+    <div class="media-body">
+        <h5 class="mt-0">@Model.Name</h5>
+        <p>@Model.LongDescription</p>
+        <p class="mb-0">R$ @Model.Price</p>
+    </div>
+
+    <a href="#" class="btn btn-info">Atualizar</a>
+    <a href="#" class="btn btn-danger">Excluir</a>
+</div>
