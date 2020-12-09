@@ -18,7 +18,8 @@ namespace Net5AnimeStore.Repository
 
         public void Delete(Game model)
         {
-            throw new NotImplementedException();
+            _context.Games.Remove(model);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Game> GetAll()
@@ -39,7 +40,8 @@ namespace Net5AnimeStore.Repository
 
         public void Update(Game model)
         {
-            throw new NotImplementedException();
+            _context.Games.Update(model);
+            _context.SaveChanges();
         }
     }
 }

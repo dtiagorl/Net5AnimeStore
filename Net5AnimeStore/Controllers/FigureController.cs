@@ -52,5 +52,36 @@ namespace Net5AnimeStore.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var result = _figureRepository.GetById(id);
+
+            return View(result);
+        }
+
+        [HttpPost]
+        [Route("figure/edit")]
+        public IActionResult Edit(Figure model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            _figureRepository.Update(model);
+
+            ViewBag.Message = "Modified with success!";
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Remove(int id)
+        {
+            var result = _figureRepository.GetById(id);
+            _figureRepository.Delete(result);
+
+            return RedirectToAction("Index");
+        }
     }
 }
