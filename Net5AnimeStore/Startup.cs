@@ -31,7 +31,6 @@ namespace Net5AnimeStore
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IConsoleRepository, ConsoleRepository>();
             services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IFigureRepository, FigureRepository>();

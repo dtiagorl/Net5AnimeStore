@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Net5AnimeStore.Models;
 using Net5AnimeStore.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,28 @@ namespace Net5AnimeStore.Controllers
             var result = _gameRepository.GetById(id);
 
             return View(result);
+        }
+
+        [Route("game/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("game/create")]
+        public IActionResult Create(Game model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            _gameRepository.Save(model);
+
+            ViewBag.Message = "Created with success!";
+
+            return RedirectToAction("Index");
         }
     }
 }

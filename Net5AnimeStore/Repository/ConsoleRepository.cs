@@ -32,7 +32,8 @@ namespace Net5AnimeStore.Repository
 
         public void Save(Models.Console model)
         {
-            throw new NotImplementedException();
+            _context.Consoles.Add(model);
+            _context.SaveChanges();
         }
 
         public void Update(Models.Console model)

@@ -9,7 +9,7 @@ namespace Net5AnimeStore.Controllers
 {
     public class ConsoleController : Controller
     {
-        private readonly IConsoleRepository _consoleRepository;
+        private readonly IConsoleRepository _consoleRepository;        
 
         public ConsoleController(IConsoleRepository consoleRepository)
         {
@@ -28,6 +28,28 @@ namespace Net5AnimeStore.Controllers
             var result = _consoleRepository.GetById(id);
 
             return View(result);
+        }
+
+        [Route("console/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("console/create")]
+        public IActionResult Create(Models.Console model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            _consoleRepository.Save(model);
+
+            ViewBag.Message = "Created with success!";
+
+            return RedirectToAction("Index");
         }
     }
 }

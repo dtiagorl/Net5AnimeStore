@@ -33,7 +33,8 @@ namespace Net5AnimeStore.Repository
 
         public void Save(Figure model)
         {
-            throw new NotImplementedException();
+            _context.Figures.Add(model);
+            _context.SaveChanges();
         }
 
         public void Update(Figure model)

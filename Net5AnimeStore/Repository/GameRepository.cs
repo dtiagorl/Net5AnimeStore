@@ -33,7 +33,8 @@ namespace Net5AnimeStore.Repository
 
         public void Save(Game model)
         {
-            throw new NotImplementedException();
+            _context.Games.Add(model);
+            _context.SaveChanges();
         }
 
         public void Update(Game model)
